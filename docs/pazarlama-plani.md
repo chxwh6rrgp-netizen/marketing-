@@ -236,3 +236,43 @@ Bunu elle saymayız. Oyuna eklenen ücretsiz bir analiz aracı her cihazı kimli
 - **Firebase Analytics (Google, ücretsiz):** SDK eklenir ve konsoldaki "Retention" raporunda 1., 7. ve 30. gün oranları görünür. Reklam aracı olarak AdMob kullanacaksak en uygun seçenek budur.
 - **GameAnalytics (ücretsiz, oyunlara özel):** 1. ve 7. gün oranlarını doğrudan gösterir.
 Analiz aracı eklendiğinde App Store Connect'teki gizlilik bölümünde (App Privacy) toplanan verileri beyan etmek gerekir.
+
+## 14. Oyun içi pencereler ve bildirimler
+
+İki farklı şey var:
+- **Oyun içi pencere (pop-up):** Oyuncu oyundayken ekranda açılır.
+- **Bildirim (push):** Oyun kapalıyken telefonun kilit ekranına gelir. Oyuncuyu geri getirmenin ana yolu budur.
+
+### 14.1 Oyun içi pencereler
+
+| Pencere | Ne zaman | Amaç |
+|---|---|---|
+| Günlük ödül / günlük bulmaca | Oyun açılınca, günde 1 kez | Her gün gelme alışkanlığı |
+| Puan isteme (Apple'ın kendi penceresi) | Mutlu bir andan sonra: 10. bölüm, rekor | Yıldız ve yorum |
+| Bildirim izni ön açıklaması | İlk oturumun sonunda veya 2. gün | İzin oranını artırmak |
+| Takip izni (ATT) ön açıklaması | İlk oyun bittikten sonra | Reklam geliri |
+| "Reklamları kaldır" teklifi | Oyuncu birkaç geçiş reklamı gördükten sonra, en fazla birkaç günde bir | Satış |
+| Diğer oyunlarımız (çapraz tanıtım) | Oturum sonunda, en fazla 2–3 günde bir | Portföy büyümesi |
+
+**Kurallar:**
+- Oyun sırasında pencere açılmaz, sadece bölüm arasında veya oyun açılırken açılır.
+- Bir oturumda en fazla 1 pazarlama penceresi gösterilir.
+- İlk oturumda pazarlama penceresi gösterilmez.
+- Her pencerede açıkça görünen bir kapatma (X) butonu olur.
+- **Puan isteme:** Mutlaka Apple'ın kendi puan penceresi kullanılır (`requestReview`). Apple kuralları (5.6.1) kendi yaptığınız bir puan penceresine izin vermez. Bu pencere bir kullanıcıya yılda en fazla 3 kez gösterilir, bu yüzden en mutlu anlara saklayın.
+
+### 14.2 Bildirimler
+
+- iOS'ta bildirim göndermek için **izin gerekir** ve sistem izin penceresi yalnızca **bir kez** çıkar. Oyuncu "Reddet" derse bir daha sorulamaz. Bu yüzden önce kendi açıklama ekranınızı gösterin ("Günlük bulmacan hazır olunca haber verelim mi?"). Oyuncu "Evet" derse Apple'ın izin penceresini açın.
+- **Sunucu gerekmez:** "Yerel bildirim" ile bildirimler telefonda önceden planlanır. Bağımsız geliştirici için en kolay başlangıç budur. Toplu kampanya göndermek isterseniz daha sonra Firebase Cloud Messaging eklenir.
+
+| Bildirim | Örnek metin |
+|---|---|
+| Günlük bulmaca hazır | "Bugünün bulmacası hazır 🧩 30 saniyede çözebilir misin?" |
+| Seri bozulmak üzere | "5 günlük serin bitmek üzere 🔥" |
+| 3 gündür gelmeyen oyuncu | "Rekorunu kimse geçemedi… henüz 👀" |
+| Yeni bölümler / yeni oyun | "50 yeni bölüm eklendi!" |
+
+- **Sıklık:** Günde en fazla 1 bildirim, akşam saatlerinde (19:00–21:00). 7 gün gelmeyen oyuncuya bildirim göndermeyi bırakın.
+- **Kural:** Apple (4.5.4), oyuncu açıkça kabul etmedikçe bildirimlerin reklam veya tanıtım için kullanılmasına izin vermez. "Yeni oyunumuz çıktı" gibi bir bildirim için ayarlardan kapatılabilen ayrı bir izin seçeneği gerekir.
+- **Ölçüm:** Firebase'de bildirim açık olan ve kapalı olan iki grup oluşturun, 1. ve 7. gün geri dönüş oranlarını karşılaştırın.
