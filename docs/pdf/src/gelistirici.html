@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>Geliştirici Görev Listesi</title><link rel="stylesheet" href="style.css"></head>
+<body>
+
+<section class="cover">
+  <div class="top">
+    <div class="kicker">Bulmaca Oyunları · Stüdyo</div>
+    <div class="title">Geliştirici<br>Görev Listesi</div>
+    <div class="sub">Oyunların App Store'a çıkması, ölçülebilmesi, para kazanması ve pazarlanabilmesi için geliştiricilerin yapması gereken her şey. Kısa, net, işaretlenebilir.</div>
+  </div>
+  <div class="meta">Sürüm 1.0 · Ekim 2026 · Hazırlayan: Pazarlama ekibi<br>Kapsam: Blok bulmaca (Block Blast tarzı), bağlantı bulmacası (Flow Free tarzı) ve sonraki benzer oyunlar</div>
+</section>
+
+<h1>Bu doküman nasıl okunur?</h1>
+
+<p>Her görevin yanında bir <strong>öncelik etiketi</strong> var. Etiketlere göre sıralayın; önce kırmızılar.</p>
+<table>
+<thead><tr><th style="width:22%">Etiket</th><th>Anlamı</th></tr></thead>
+<tbody>
+<tr><td><span class="tag p0">P0</span> Zorunlu</td><td>Bu olmadan oyun yayınlanmaz, reddedilir ya da ölçülemez. <strong>Lansmandan önce bitmeli.</strong></td></tr>
+<tr><td><span class="tag p1">P1</span> Önemli</td><td>Lansmandan önce olması çok iyi olur. Para kazanma ve geri dönüş oranını doğrudan etkiler.</td></tr>
+<tr><td><span class="tag p2">P2</span> Sonra</td><td>Lansmandan sonraki ilk 1–2 ay içinde.</td></tr>
+</tbody></table>
+
+<div class="box"><span class="t">Altın kural: bir kez yap, her oyunda kullan</span>
+Analiz, reklam, onay penceresi, bildirim, puan isteme ve çapraz tanıtım kodunu <strong>ortak bir paket/modül</strong> olarak yazın (ör. <code>StudioKit</code>). Böylece 3. oyunda bu işler birkaç saate iner. İki geliştirici bu modülü birlikte sahiplenir; her biri kendi oyununa entegre eder.</div>
+
+<h2>Görevlerin özeti</h2>
+<table>
+<thead><tr><th style="width:5%">#</th><th>Konu</th><th style="width:11%">Öncelik</th><th style="width:21%">Kaba süre*</th><th style="width:18%">Kim</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Hesaplar, sözleşmeler, ekip erişimi</td><td><span class="tag p0">P0</span></td><td>1–3 gün (bekleme dahil)</td><td>Hesap sahibi</td></tr>
+<tr><td>2</td><td>App Store kurallarına uyum</td><td><span class="tag p0">P0</span></td><td>Sürekli</td><td>Herkes</td></tr>
+<tr><td>3</td><td>Analiz (Firebase) ve olay takibi</td><td><span class="tag p0">P0</span></td><td>1–2 gün</td><td>Her dev kendi oyunu</td></tr>
+<tr><td>4</td><td>Gizlilik: onay formu ve ATT</td><td><span class="tag p0">P0</span></td><td>0,5–1 gün</td><td>Ortak modül</td></tr>
+<tr><td>5</td><td>Reklamlar (ödüllü, geçiş, banner)</td><td><span class="tag p0">P0</span></td><td>2–3 gün</td><td>Ortak modül</td></tr>
+<tr><td>6</td><td>Uygulama içi satın alma</td><td><span class="tag p1">P1</span></td><td>1–2 gün</td><td>Ortak modül</td></tr>
+<tr><td>7</td><td>Uzaktan ayar (Remote Config)</td><td><span class="tag p1">P1</span></td><td>0,5 gün</td><td>Ortak modül</td></tr>
+<tr><td>8</td><td>Bildirimler (yerel)</td><td><span class="tag p1">P1</span></td><td>1 gün</td><td>Ortak modül</td></tr>
+<tr><td>9</td><td>Puan isteme</td><td><span class="tag p1">P1</span></td><td>1–2 saat</td><td>Ortak modül</td></tr>
+<tr><td>10</td><td>Ayarlar menüsü</td><td><span class="tag p0">P0</span></td><td>0,5 gün</td><td>Her dev kendi oyunu</td></tr>
+<tr><td>11</td><td>Çapraz tanıtım ("Diğer oyunlarımız")</td><td><span class="tag p1">P1</span></td><td>0,5 gün</td><td>Ortak modül</td></tr>
+<tr><td>12</td><td>Video modu (pazarlama çekimleri için)</td><td><span class="tag p1">P1</span></td><td>1–2 gün</td><td>Her dev kendi oyunu</td></tr>
+<tr><td>13</td><td>Günlük bulmaca ve seri sistemi</td><td><span class="tag p1">P1</span></td><td>1–3 gün</td><td>Her dev kendi oyunu</td></tr>
+<tr><td>14</td><td>Yerelleştirme (oyun içi metinler)</td><td><span class="tag p2">P2</span></td><td>0,5 gün + çeviri</td><td>Her dev kendi oyunu</td></tr>
+<tr><td>15</td><td>Yayın öncesi kontrol ve TestFlight</td><td><span class="tag p0">P0</span></td><td>1–2 gün</td><td>Herkes</td></tr>
+</tbody></table>
+<p class="small muted">* Süreler kaba tahmindir; motor ve deneyime göre değişir. Amaç sırayı ve büyüklüğü göstermek.</p>
+
+<!-- 1 -->
+<section class="chapter">
+<h1>1. Hesaplar ve erişim <span class="tag p0">P0</span></h1>
+
+<h3>Apple Developer Program</h3>
+<ul class="check">
+<li><strong>Tek stüdyo hesabı</strong> açın, tüm oyunlar bu hesaptan yayınlansın. App Store'da "Bu geliştiricinin diğer uygulamaları" bölümünde oyunlar birbirini gösterir. Ücret: yıllık 99 USD.</li>
+<li>Hesap türü kararı:
+  <ul>
+  <li><strong>Bireysel:</strong> Hızlı açılır, ama App Store'da satıcı adı olarak kişinin <em>gerçek adı</em> görünür.</li>
+  <li><strong>Kurumsal (Organization):</strong> Satıcı adı stüdyo adı olur. Şirket (şahıs şirketi yeterli olabilir) ve ücretsiz <strong>D-U-N-S numarası</strong> gerekir. Onay 1–2 hafta sürebilir.</li>
+  </ul>
+  Pazarlama açısından tercih: <strong>Kurumsal</strong> (stüdyo markası). Zaman yoksa bireysel ile başlayıp sonra taşıma mümkündür ama zahmetlidir.</li>
+<li>App Store Connect → <strong>Business</strong>: "Paid Apps" sözleşmesini imzalayın, banka ve vergi bilgilerini girin. <em>Ücretsiz oyun olsa bile</em> uygulama içi satın alma ve ödeme almak için şart.</li>
+<li><strong>App Store Small Business Program</strong>'a başvurun. Yıllık gelir 1 milyon USD altındaysa Apple komisyonu %30 yerine <strong>%15</strong> olur. Başvurmazsanız otomatik olmaz.</li>
+<li>Türkiye'de vergi: Mobil uygulama geliştiricileri için özel bir düzenleme var (GVK 20/B, özel banka hesabı ile stopaj). <strong>Mali müşavire danışın.</strong></li>
+</ul>
+
+<h3>Pazarlamacıya erişim verin</h3>
+<table>
+<thead><tr><th>Nerede</th><th>Rol</th><th>Neden</th></tr></thead>
+<tbody>
+<tr><td>App Store Connect → Users and Access</td><td><strong>Marketing</strong> + <strong>Customer Support</strong> (veya App Manager)</td><td>Mağaza metinleri, ekran görüntüleri, yorumlara cevap, analiz ekranları</td></tr>
+<tr><td>Firebase konsolu</td><td>Viewer (veya Analytics editörü)</td><td>Geri dönüş oranı ve olay raporları</td></tr>
+<tr><td>AdMob / AppLovin MAX</td><td>Salt okuma kullanıcısı</td><td>Reklam geliri takibi</td></tr>
+<tr><td>Apple Ads</td><td>Hesabı pazarlamacı açabilir, aynı Apple hesabına bağlanır</td><td>Ücretli arama reklamları</td></tr>
+</tbody></table>
+
+<h3>Adlandırma</h3>
+<ul class="check">
+<li>Bundle ID düzeni (sadece İngilizce harf, rakam, nokta): <code>com.studyoadi.oyunadi</code> (ör. <code>com.pixelduo.blockcalm</code>). Sonradan değiştirilemez.</li>
+<li>Oyun adı <strong>pazarlama ile birlikte</strong> seçilir (mağazada en fazla 30 karakter).</li>
+</ul>
+</section>
+
+<!-- 2 -->
+<section class="chapter">
+<h1>2. App Store kurallarına uyum <span class="tag p0">P0</span></h1>
+<p>Bu tür oyunlar en çok aşağıdaki maddeler yüzünden reddedilir. Her sürümde kontrol edin.</p>
+<table>
+<thead><tr><th style="width:17%">Kural</th><th>Ne diyor</th><th>Bizim için anlamı</th></tr></thead>
+<tbody>
+<tr><td><strong>4.1</strong> Kopya</td><td>Başka uygulamanın adını, ikonunu, görünüşünü taklit etme.</td><td>Kendi adımız, ikonumuz, renklerimiz, seslerimiz. Kodda/metinde "Block Blast", "Flow Free" geçmez.</td></tr>
+<tr><td><strong>4.3</strong> Spam</td><td>Birbirinin aynısı çok sayıda uygulama yayınlama.</td><td>Her yeni oyun belirgin şekilde farklı olmalı (mekanik, tema, ilerleme). Aynı oyunu tema değiştirip tekrar yüklemeyin.</td></tr>
+<tr><td><strong>3.1.1</strong> Satın alma</td><td>Dijital içerik yalnızca Apple'ın satın alma sistemiyle satılır.</td><td>"Reklamları kaldır", ipucu paketleri: StoreKit ile. <strong>"Satın alımları geri yükle"</strong> butonu şart.</td></tr>
+<tr><td><strong>5.6.1</strong> Yorumlar</td><td>Puan istemek için yalnızca Apple'ın API'si kullanılır.</td><td>Kendi "Bizi 5 yıldızla" pencerenizi yapmayın. Bkz. Bölüm 9.</td></tr>
+<tr><td><strong>4.5.4</strong> Bildirim</td><td>Tanıtım bildirimi için açık izin ve kapatma seçeneği gerekir.</td><td>"Yeni oyunumuz çıktı" bildirimi için ayrı bir anahtar. Bkz. Bölüm 8.</td></tr>
+<tr><td><strong>5.1.1</strong> Gizlilik</td><td>Gizlilik politikası linki ve doğru veri beyanı.</td><td>Mağazada ve oyunda link; App Privacy formu eksiksiz. Bkz. Bölüm 4.</td></tr>
+<tr><td><strong>2.3</strong> Doğru meta veri</td><td>Ekran görüntüleri ve video gerçek oyunu göstermeli.</td><td>Video modu çekimleri gerçek oynanış olmalı (Bölüm 12).</td></tr>
+</tbody></table>
+
+<div class="box warn"><span class="t">Çocuk kategorisi</span>Oyunu <strong>"Kids" kategorisine koymayın</strong> ve yaş derecelendirmesinde çocuklara yönelik işaretlemeyin. Çocuk oyunlarında reklam ve analiz kuralları çok daha sıkıdır.</div>
+</section>
+
+<!-- 3 -->
+<section class="chapter">
+<h1>3. Analiz ve olay takibi <span class="tag p0">P0</span></h1>
+<p>Amaç: Pazarlamacı "oyuncular ertesi gün geliyor mu, nerede bırakıyorlar, reklam ne kazandırıyor?" sorularını <strong>size sormadan</strong> panelden cevaplayabilsin.</p>
+
+<h3>Kurulum</h3>
+<ul class="check">
+<li>Firebase projesi: <strong>her oyun için ayrı proje</strong> (veya tek projede ayrı iOS uygulaması; ayrı proje daha temiz).</li>
+<li>SDK'lar: <strong>Firebase Analytics</strong>, <strong>Crashlytics</strong> (çökme raporu), <strong>Remote Config</strong> (Bölüm 7).</li>
+<li>Firebase ↔ AdMob bağlantısı (AdMob kullanılıyorsa): reklam geliri olayları otomatik gelir.</li>
+<li>Reklam kimliği (IDFA) toplama: sadece ATT izni verildiyse. Bkz. Bölüm 4.</li>
+<li>DebugView ile her olayı test edin (Xcode argümanı: <code>-FIRDebugEnabled</code>).</li>
+</ul>
+
+<h3>Kaydedilecek olaylar</h3>
+<p class="small muted">Adlar küçük harf + alt çizgi. Firebase'in önerdiği adlar (level_start, level_end, post_score, tutorial_*) kullanıldı; bunlar raporlarda hazır görünür.</p>
+<table>
+<thead><tr><th style="width:27%">Olay adı</th><th style="width:33%">Ne zaman</th><th>Parametreler</th></tr></thead>
+<tbody>
+<tr><td><code>tutorial_begin</code></td><td>Öğretici başlar</td><td>—</td></tr>
+<tr><td><code>tutorial_complete</code></td><td>Öğretici biter</td><td>—</td></tr>
+<tr><td><code>level_start</code></td><td>Bölüm / oyun başlar</td><td><code>level_name</code> (ör. "12" veya "endless")</td></tr>
+<tr><td><code>level_end</code></td><td>Bölüm / oyun biter</td><td><code>level_name</code>, <code>success</code> (true/false), <code>duration_sec</code>, <code>moves</code></td></tr>
+<tr><td><code>post_score</code></td><td>Sonsuz modda oyun biter</td><td><code>score</code>, <code>level_name</code>, <code>is_high_score</code></td></tr>
+<tr><td><code>hint_used</code></td><td>İpucu kullanıldı</td><td><code>level_name</code>, <code>source</code> (ad / iap / free)</td></tr>
+<tr><td><code>continue_used</code></td><td>"Devam et" kullanıldı</td><td><code>source</code> (ad / coin)</td></tr>
+<tr><td><code>rewarded_offer_shown</code></td><td>Ödüllü reklam teklifi göründü</td><td><code>placement</code> (continue / hint / daily_bonus)</td></tr>
+<tr><td><code>rewarded_completed</code></td><td>Ödüllü reklam sonuna kadar izlendi</td><td><code>placement</code></td></tr>
+<tr><td><code>interstitial_shown</code></td><td>Geçiş reklamı gösterildi</td><td><code>placement</code>, <code>games_played</code></td></tr>
+<tr><td><code>ad_impression</code></td><td>Her reklam gösterimi (gelir ile)</td><td>AdMob bağlıysa otomatik. AppLovin MAX ise elle: <code>ad_platform</code>, <code>ad_format</code>, <code>value</code>, <code>currency</code></td></tr>
+<tr><td><code>daily_challenge_start / _complete</code></td><td>Günlük bulmaca</td><td><code>streak_days</code></td></tr>
+<tr><td><code>iap_offer_shown</code></td><td>"Reklamları kaldır" vb. teklif görüldü</td><td><code>product_id</code>, <code>trigger</code></td></tr>
+<tr><td><code>notif_permission</code></td><td>Bildirim izni sonucu</td><td><code>result</code> (granted / denied / later)</td></tr>
+<tr><td><code>att_result</code></td><td>ATT izni sonucu</td><td><code>status</code> (authorized / denied)</td></tr>
+<tr><td><code>notification_open</code></td><td>Bildirimden oyuna gelindi</td><td><code>type</code> (daily / streak / winback)</td></tr>
+<tr><td><code>rate_prompt_requested</code></td><td>Puan penceresi istendi</td><td><code>trigger</code> (level_10, high_score…)</td></tr>
+<tr><td><code>cross_promo_click</code></td><td>Diğer oyuna tıklandı</td><td><code>target_game</code>, <code>placement</code></td></tr>
+</tbody></table>
+
+<h4>Kullanıcı özellikleri (user properties)</h4>
+<ul>
+<li><code>ads_removed</code>: true/false</li>
+<li><code>ab_group</code>: Remote Config A/B testinden gelen grup</li>
+<li><code>games_played_total</code>: 1, 2–5, 6–20, 20+ (kova olarak)</li>
+</ul>
+
+<div class="box ok"><span class="t">Bitti sayılması için</span>Pazarlamacı Firebase'de: (1) Retention raporunu, (2) <code>level_end</code> ile hangi bölümde en çok kaybedildiğini, (3) <code>ad_impression</code> ile günlük reklam gelirini görebiliyor.</div>
+</section>
+
+<!-- 4 -->
+<section class="chapter">
+<h1>4. Gizlilik, onay ve ATT <span class="tag p0">P0</span></h1>
+
+<h3>Açılış sırası</h3>
+<div class="step"><div class="n">1</div><div class="c"><p><strong>İlk açılış: UMP onay formu.</strong> Google'ın ücretsiz <strong>User Messaging Platform (UMP)</strong> SDK'sı. Formu sadece gerektiği yerde (AB, Birleşik Krallık vb.) kendisi gösterir. AdMob kullanılıyorsa Google bu bölgeler için sertifikalı onay aracını zorunlu tutar. Form AdMob panelinden (Privacy &amp; messaging) oluşturulur.</p></div></div>
+<div class="step"><div class="n">2</div><div class="c"><p><strong>İlk oyun bitince: ATT açıklama ekranı + Apple ATT penceresi.</strong> Önce kendi kısa ekranımız ("Reklamların sana uygun olması için izin verir misin? Oyun her durumda ücretsiz.") → sonra <code>ATTrackingManager.requestTrackingAuthorization</code>. Uygulama açılır açılmaz <em>sormayın</em>.</p></div></div>
+<div class="step"><div class="n">3</div><div class="c"><p><strong>Reklam SDK'sını başlat:</strong> Onay ve ATT sonucu belli olduktan sonra reklam ve analiz SDK'larını uygun ayarla başlatın (Firebase'de consent mode).</p></div></div>
+
+<h3>Kontrol listesi</h3>
+<ul class="check">
+<li><code>Info.plist</code> → <code>NSUserTrackingUsageDescription</code>: Türkçe + İngilizce açıklama (ör. "Bu izin, sana daha alakalı reklamlar göstermek için kullanılır.").</li>
+<li><code>Info.plist</code> → <code>SKAdNetworkItems</code>: Reklam ağının (AdMob/MAX) yayınladığı güncel SKAdNetwork ID listesi.</li>
+<li><strong>Privacy Manifest</strong> (<code>PrivacyInfo.xcprivacy</code>): Kendi kodunuz için gerekiyorsa ekleyin; SDK'ların güncel sürümlerini kullanın (kendi manifestlerini getirirler).</li>
+<li>App Store Connect → <strong>App Privacy</strong>: Toplanan veri türleri (Kullanım verisi, Tanılama, Tanımlayıcılar, Satın almalar) ve "takip için kullanılıyor mu?" sorusu. Kullanılan SDK'ların dokümanlarına göre doldurun.</li>
+<li><strong>Gizlilik politikası URL'si</strong> (pazarlama hazırlar, ör. GitHub Pages) → App Store Connect'e ve oyunun Ayarlar menüsüne.</li>
+<li>Ayarlar menüsünde <strong>"Gizlilik seçenekleri"</strong> butonu: UMP formunu yeniden açar (UMP bunu zorunlu tutar).</li>
+</ul>
+<div class="box warn"><span class="t">Not</span>Bu bölüm hukuki danışmanlık değildir. KVKK/GDPR ayrıntıları için yayından önce bir hukukçuya danışılacak (pazarlama takip eder).</div>
+</section>
+
+<!-- 5 -->
+<section class="chapter">
+<h1>5. Reklamlar <span class="tag p0">P0</span></h1>
+<p>Önerilen başlangıç: <strong>Google AdMob</strong> (Firebase ile en kolay entegrasyon). Ölçek büyüyünce <strong>AppLovin MAX</strong> gibi bir mediation platformuna geçilebilir; kodu buna hazır, soyut bir <code>AdService</code> arayüzü arkasında yazın.</p>
+
+<h3>Yerleşimler ve kurallar</h3>
+<table>
+<thead><tr><th style="width:17%">Tür</th><th style="width:31%">Nerede</th><th>Kurallar (Remote Config ile değiştirilebilir olsun)</th></tr></thead>
+<tbody>
+<tr><td><strong>Ödüllü video</strong></td><td>Oyun bitince "Devam et"; ipucu; günlük bonus x2</td><td>Her zaman oyuncunun seçimi. Ödül anında ve kesin verilir. Reklam yüklenmediyse buton gizlenir veya "şu an yok" der.</td></tr>
+<tr><td><strong>Geçiş (interstitial)</strong></td><td>Oyun bitişi / bölüm arası</td><td><strong>İlk 3 oyunda yok.</strong> İki geçiş reklamı arasında en az 90 sn. Her 2 oyunda bir. Oyun sırasında asla. Ödüllü reklamdan hemen sonra gösterilmez.</td></tr>
+<tr><td><strong>Banner</strong></td><td>Ekranın en altı</td><td>Oyun alanını ve butonları kapatmaz (güvenli alan). Ana menüde opsiyonel.</td></tr>
+<tr><td>Uygulama açılış reklamı</td><td>—</td><td><strong>Şimdilik kullanmayın.</strong> İlk izlenimi bozar, geri dönüşü düşürür.</td></tr>
+</tbody></table>
+
+<ul class="check">
+<li>Test cihazlarında <strong>test reklam ID'leri</strong> kullanın. Kendi canlı reklamınıza tıklamak hesabın kapatılmasına yol açabilir.</li>
+<li>Reklamları önceden yükleyin (preload); gösterim anında bekletmeyin.</li>
+<li>"Reklamları kaldır" satın alındıysa: geçiş + banner kapanır, <strong>ödüllü video kalır</strong> (oyuncu ödül istiyor).</li>
+<li>Reklam sırasında oyun sesi kapanır, sonra geri açılır.</li>
+<li><span class="tag p2">P2</span> Ücretli TikTok/Meta reklamları başladığında: Meta/TikTok SDK'sı veya bir MMP (AppsFlyer, Adjust, Singular) eklenmesi gerekebilir. Karar pazarlamayla birlikte, Apple Ads aşamasından sonra verilir.</li>
+<li><code>app-ads.txt</code> dosyası: Geliştirici web sitesinin kök dizinine konur (AdMob verir). Pazarlama siteyi açar, siz içeriği verin.</li>
+</ul>
+</section>
+
+<!-- 6 -->
+<section class="chapter">
+<h1>6. Uygulama içi satın alma <span class="tag p1">P1</span></h1>
+<table>
+<thead><tr><th>Ürün</th><th style="width:22%">Tür</th><th style="width:22%">Örnek fiyat</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td><strong>Reklamları kaldır</strong></td><td>Non-consumable</td><td>Orta-düşük kademe</td><td>En önemli ürün. Geçiş + banner kapanır.</td></tr>
+<tr><td>İpucu paketi (küçük / büyük)</td><td>Consumable</td><td>Düşük kademe</td><td>Bağlantı bulmacası için.</td></tr>
+<tr><td>Tema / blok kaplama paketi</td><td>Non-consumable</td><td>Düşük kademe</td><td>Blok bulmaca için.</td></tr>
+<tr><td>Başlangıç paketi (ileride)</td><td>Non-consumable</td><td>—</td><td>Reklam kaldır + ipucu birlikte, tek seferlik teklif.</td></tr>
+</tbody></table>
+<p class="small muted">Kesin fiyatları pazarlama belirler; Apple'ın fiyat kademelerinden seçilir ve ülkelere göre otomatik ayarlanır.</p>
+<ul class="check">
+<li>StoreKit 2 (veya motorunuzun IAP paketi) ile.</li>
+<li><strong>"Satın alımları geri yükle"</strong> butonu (Ayarlar'da). Zorunlu.</li>
+<li>Satın alma durumu cihazda kalıcı saklanır; yeniden yüklemede geri yüklenebilir.</li>
+<li>Sandbox hesabıyla test: satın alma, iptal, geri yükleme, internet yokken.</li>
+<li>Ürün ID düzeni: <code>com.studyoadi.oyunadi.remove_ads</code>, <code>…hints_small</code>.</li>
+</ul>
+</section>
+
+<!-- 7 -->
+<section class="chapter">
+<h1>7. Uzaktan ayar (Remote Config) <span class="tag p1">P1</span></h1>
+<p>Amaç: Reklam sıklığı, teklif zamanları gibi ayarları <strong>yeni sürüm çıkarmadan</strong> değiştirebilmek ve A/B testi yapabilmek. Aşağıdaki değerleri koddan değil Remote Config'ten okuyun (varsayılanlar kodda dursun).</p>
+<table>
+<thead><tr><th style="width:43%">Parametre</th><th style="width:15%">Varsayılan</th><th>Ne yapar</th></tr></thead>
+<tbody>
+<tr><td><code>interstitial_start_after_games</code></td><td>3</td><td>Kaçıncı oyundan sonra geçiş reklamı başlar</td></tr>
+<tr><td><code>interstitial_every_n_games</code></td><td>2</td><td>Kaç oyunda bir geçiş reklamı</td></tr>
+<tr><td><code>interstitial_min_interval_sec</code></td><td>90</td><td>İki geçiş reklamı arası en az süre</td></tr>
+<tr><td><code>banner_enabled</code></td><td>true</td><td>Banner açık/kapalı</td></tr>
+<tr><td><code>rewarded_continue_enabled</code></td><td>true</td><td>"Devam et" ödüllü reklamı</td></tr>
+<tr><td><code>remove_ads_offer_after_interstitials</code></td><td>5</td><td>Kaç geçiş reklamından sonra "reklamları kaldır" teklifi</td></tr>
+<tr><td><code>remove_ads_offer_cooldown_days</code></td><td>3</td><td>Teklif kaç günde bir tekrar gösterilir</td></tr>
+<tr><td><code>cross_promo_enabled</code></td><td>true</td><td>Çapraz tanıtım penceresi</td></tr>
+<tr><td><code>cross_promo_cooldown_days</code></td><td>3</td><td>Pencere sıklığı</td></tr>
+<tr><td><code>cross_promo_target</code></td><td>—</td><td>Hangi oyunu tanıtacağı (App Store ID)</td></tr>
+<tr><td><code>rate_prompt_triggers</code></td><td>"level_10,high_score"</td><td>Puan penceresi hangi anlarda istenir</td></tr>
+<tr><td><code>notif_hour_local</code></td><td>20</td><td>Günlük bildirim saati (yerel)</td></tr>
+<tr><td><code>notif_permission_ask_after_games</code></td><td>3</td><td>Bildirim izni kaçıncı oyundan sonra sorulur</td></tr>
+<tr><td><code>difficulty_variant</code></td><td>"A"</td><td>Zorluk eğrisi testi için</td></tr>
+</tbody></table>
+<div class="box"><span class="t">A/B testi</span>Firebase A/B Testing, bu parametrelerle iki grup oluşturur ve 1./7. gün geri dönüş + reklam gelirini karşılaştırır. Testleri pazarlama kurar; sizin işiniz değerleri Remote Config'ten okumak.</div>
+</section>
+
+<!-- 8 -->
+<section class="chapter">
+<h1>8. Bildirimler <span class="tag p1">P1</span></h1>
+<p><strong>Yerel bildirim</strong> (local notification) ile başlayın: Sunucu gerekmez, cihazda planlanır.</p>
+
+<h3>İzin akışı</h3>
+<div class="step"><div class="n">1</div><div class="c"><p>3. oyun bittikten sonra (Remote Config) <strong>kendi açıklama ekranımız</strong>: "Günlük bulmacan hazır olunca haber verelim mi?" → [Evet] [Şimdi değil]</p></div></div>
+<div class="step"><div class="n">2</div><div class="c"><p>"Evet" → Apple'ın sistem izni. "Şimdi değil" → sistem penceresi <strong>açılmaz</strong> (çünkü sistem penceresi yalnızca bir kez çıkar). 3 gün sonra tekrar sorulabilir.</p></div></div>
+
+<h3>Planlanacak bildirimler</h3>
+<table>
+<thead><tr><th style="width:22%">Tür</th><th style="width:33%">Kural</th><th>Örnek metin (TR)</th></tr></thead>
+<tbody>
+<tr><td>Günlük bulmaca</td><td>Her gün <code>notif_hour_local</code>'da; oyuncu o gün zaten oynadıysa iptal</td><td>"Bugünün bulmacası hazır 🧩"</td></tr>
+<tr><td>Seri hatırlatma</td><td>Seri ≥ 3 gün ve bugün oynanmadıysa</td><td>"5 günlük serin bitmek üzere 🔥"</td></tr>
+<tr><td>Geri kazanma</td><td>Son oyundan 3 gün ve 7 gün sonra, sonra durur</td><td>"Rekorun hâlâ ayakta. Geçebilir misin?"</td></tr>
+</tbody></table>
+<ul class="check">
+<li>Günde en fazla <strong>1</strong> bildirim. Oyun her açıldığında bekleyen bildirimler yeniden planlanır.</li>
+<li>Bildirime tıklayınca ilgili ekrana gidilir (günlük bulmaca vb.) ve <code>notification_open</code> kaydedilir.</li>
+<li>Ayarlar'da iki anahtar: <strong>Hatırlatmalar</strong> ve <strong>Yeni oyun/haber bildirimleri</strong> (ikincisi varsayılan kapalı; tanıtım için Kural 4.5.4).</li>
+<li>Metinler pazarlamadan gelir; dosyada/yerelleştirmede tutulsun, kodda sabit olmasın.</li>
+</ul>
+</section>
+
+<!-- 9-11 -->
+<section class="chapter">
+<h1>9. Puan isteme <span class="tag p1">P1</span></h1>
+<ul class="check">
+<li>Sadece Apple'ın API'si: <code>AppStore.requestReview(in:)</code> / <code>SKStoreReviewController</code> (motorunuzdaki karşılığı).</li>
+<li>Apple bu pencereyi kullanıcı başına <strong>yılda en fazla 3 kez</strong> gösterir; istediğinizde göstereceği garanti değildir.</li>
+<li>Sadece <strong>mutlu anlarda</strong>: 10. bölümü geçince, yeni rekorda. Kaybettikten sonra, reklamdan sonra veya ilk oturumda asla.</li>
+<li>Kendi "Oyunu beğendin mi?" ön penceresini yapmayın.</li>
+<li>Ayarlar'da "Bizi değerlendir" satırı → App Store yorum sayfasına link (<code>…?action=write-review</code>).</li>
+</ul>
+
+<h1 style="margin-top:9mm">10. Ayarlar menüsü <span class="tag p0">P0</span></h1>
+<ul class="check">
+<li>Ses / müzik / titreşim</li>
+<li>Bildirimler: Hatırlatmalar, Yeni oyun/haber (Bölüm 8)</li>
+<li><strong>Satın alımları geri yükle</strong></li>
+<li><strong>Gizlilik politikası</strong> (link) ve <strong>Gizlilik seçenekleri</strong> (UMP)</li>
+<li>Bizi değerlendir · Diğer oyunlarımız · İletişim (destek e-postası)</li>
+<li>Sürüm numarası (destek için)</li>
+</ul>
+
+<h1 style="margin-top:9mm">11. Çapraz tanıtım <span class="tag p1">P1</span></h1>
+<ul class="check">
+<li>Ana menüde <strong>"Diğer oyunlarımız"</strong> butonu: stüdyonun diğer oyunlarını listeler (liste Remote Config/JSON'dan; yeni oyun eklenince güncelleme gerekmesin).</li>
+<li>Oturum sonunda en fazla 3 günde bir küçük tanıtım kartı (Remote Config).</li>
+<li>App Store'u oyun içinden açın: <code>SKStoreProductViewController</code> (oyundan çıkmadan mağaza sayfası).</li>
+<li><strong>Kampanya token'ı</strong> kullanın ki App Store Connect'te kaynak görünsün: <code>ct=crosspromo_blockgame</code> (StoreKit parametresi <code>SKStoreProductParameterCampaignToken</code> veya link <code>?pt=PROVIDER_ID&amp;ct=…</code>). Provider ID'yi pazarlama App Store Connect'ten verir.</li>
+<li>Diğer oyun zaten yüklüyse butonu "Oyna" yapmak için URL şeması tanımlayın (opsiyonel, P2).</li>
+</ul>
+</section>
+
+<!-- 12 -->
+<section class="chapter">
+<h1>12. Video modu (pazarlama çekimleri) <span class="tag p1">P1</span></h1>
+<p>Pazarlamanın ana silahı kısa oynanış videoları. Bunları hızlı ve güzel çekebilmek için oyunda <strong>gizli bir video modu</strong> olsun. Bu, bütün pazarlama çalışmasını kolaylaştıran en değerli geliştirici işidir.</p>
+<table>
+<thead><tr><th style="width:36%">Özellik</th><th>Neden</th></tr></thead>
+<tbody>
+<tr><td>Belirli bir tahtayı / bölümü yükleme (JSON'dan)</td><td>"4 satır birden temizleme" gibi en tatmin edici anı tekrar tekrar çekmek</td></tr>
+<tr><td>Arayüzü, banner'ı ve reklamları gizleme</td><td>Temiz görüntü</td></tr>
+<tr><td>Sınırsız geri alma</td><td>Hata yapınca baştan başlamamak</td></tr>
+<tr><td>Ağır çekim (0,5x) anahtarı</td><td>Kombo anlarını vurgulamak</td></tr>
+<tr><td>Dokunma göstergesi (parmak izi efekti)</td><td>İzleyici neye dokunulduğunu görsün</td></tr>
+<tr><td>Ses efektlerini ayrı açıp kapama</td><td>ASMR videoları ve müzikli kurgular için</td></tr>
+<tr><td>Kazanılmış gibi görünen tahta durumları ("kıl payı")</td><td>Kıl payı kaçırma videoları</td></tr>
+</tbody></table>
+<ul class="check">
+<li>Sadece <strong>TestFlight/debug</strong> sürümlerinde açılsın (ör. logoya 5 kez dokun). Mağaza sürümünde kapalı.</li>
+<li>60 fps, dikey 9:16. Pazarlamacının telefonunda çalışan bir TestFlight sürümü olsun.</li>
+<li>Videolarda yalnızca <strong>oyunda gerçekten olan</strong> mekanikler gösterilir (yanıltıcı içerik yok).</li>
+</ul>
+
+<h1 style="margin-top:9mm">13. Günlük bulmaca ve seri <span class="tag p1">P1</span></h1>
+<p>Ertesi gün geri gelmenin en güçlü nedeni. Bildirimler (Bölüm 8) buna bağlanır.</p>
+<ul class="check">
+<li>Her gün herkese aynı bulmaca (tarihten üretilen tohum/seed) → "Bugünkünü çözdün mü?" paylaşılabilir.</li>
+<li>Seri sayacı (üst üste gün). Seriyi kurtarmak için ödüllü reklam seçeneği (P2).</li>
+<li>Paylaş butonu: sonuç kartı görseli + App Store linki (<code>ct=share</code>).</li>
+</ul>
+</section>
+
+<!-- 14-15 -->
+<section class="chapter">
+<h1>14. Yerelleştirme <span class="tag p2">P2</span></h1>
+<ul class="check">
+<li>Oyun içi tüm metinler (menüler, pencereler, bildirimler) tek bir çeviri dosyasında. Kodda sabit metin yok.</li>
+<li>İlk diller: <strong>Türkçe, İngilizce</strong>. Sonra: İspanyolca, Portekizce (BR), Almanca, Fransızca, Japonca, Korece, Rusça, Endonezce. Çevirileri pazarlama sağlar.</li>
+<li>Uzun metinler için arayüzde yer bırakın (Almanca ~%30 uzun olabilir).</li>
+</ul>
+
+<h1 style="margin-top:9mm">15. Yayın öncesi kontrol <span class="tag p0">P0</span></h1>
+<h3>Teknik</h3>
+<ul class="check">
+<li>Crashlytics çalışıyor, test çökmesi panelde göründü.</li>
+<li>Tüm olaylar DebugView'da doğru parametrelerle görünüyor (Bölüm 3 tablosu).</li>
+<li>Test reklamları gösteriliyor; canlı reklam ID'leri yalnızca yayın sürümünde.</li>
+<li>UMP formu (AB IP'siyle/VPN ile) ve ATT akışı test edildi.</li>
+<li>Satın alma, geri yükleme sandbox'ta test edildi.</li>
+<li>İnternet yokken oyun açılıyor ve oynanıyor (reklamlar sessizce atlanıyor).</li>
+<li>En eski desteklenen iPhone'da ve küçük ekranda (iPhone SE) akıcı.</li>
+<li>Uygulama boyutu makul (bu tür oyunlarda küçük olmak indirmeyi artırır).</li>
+</ul>
+<h3>App Store Connect</h3>
+<ul class="check">
+<li>App Privacy formu, yaş derecelendirmesi, kategori (Games → Puzzle; ikincil: Casual veya Board).</li>
+<li>Gizlilik politikası ve destek URL'leri.</li>
+<li>Satın alma ürünleri oluşturuldu ve ilk sürümle birlikte incelemeye gönderildi.</li>
+<li><strong>TestFlight</strong>: dış test grubu (pazarlamanın toplayacağı 30–50 kişi). Dış test için kısa bir Beta incelemesi gerekir.</li>
+<li><strong>Ön sipariş (pre-order)</strong> açılacaksa: ilk sürüm buna göre gönderilir (pazarlamayla tarih belirleyin).</li>
+<li>Sürüm notları (pazarlama yazar).</li>
+</ul>
+
+<h2>Pazarlamaya teslim edilecekler</h2>
+<table>
+<thead><tr><th>Ne</th><th style="width:26%">Ne zaman</th></tr></thead>
+<tbody>
+<tr><td>Video modlu TestFlight sürümü</td><td>Lansmandan ≥ 4 hafta önce</td></tr>
+<tr><td>Oyun ikonu (1024×1024), logo, ana renkler, oyun içi ekran yakalamaları</td><td>Lansmandan ≥ 4 hafta önce</td></tr>
+<tr><td>App Store ID ve Provider ID (kampanya linkleri için)</td><td>Uygulama kaydı açılınca</td></tr>
+<tr><td>Firebase / AdMob / App Store Connect erişimleri</td><td>Hemen</td></tr>
+<tr><td>Olay listesi tamamlandı onayı</td><td>Sınırlı lansmandan önce</td></tr>
+<tr><td>Her sürümde: "Ne değişti?" listesi (sürüm notları ve sosyal medya için)</td><td>Her sürüm</td></tr>
+</tbody></table>
+</section>
+
+<section class="chapter">
+<h1>Ek: Motora göre paketler</h1>
+<p class="muted">Hangi motoru kullandığınıza göre aşağıdaki paketleri kullanın. Her zaman resmi dokümandaki güncel sürümü kontrol edin.</p>
+<table>
+<thead><tr><th style="width:17%">İş</th><th>Unity</th><th>Flutter</th><th>Swift (yerel)</th></tr></thead>
+<tbody>
+<tr><td>Analiz</td><td>Firebase Unity SDK</td><td><code>firebase_analytics</code></td><td>Firebase iOS SDK</td></tr>
+<tr><td>Çökme</td><td>Crashlytics (Unity)</td><td><code>firebase_crashlytics</code></td><td>Crashlytics</td></tr>
+<tr><td>Uzaktan ayar</td><td>Remote Config (Unity)</td><td><code>firebase_remote_config</code></td><td>FirebaseRemoteConfig</td></tr>
+<tr><td>Reklam + UMP</td><td>Google Mobile Ads Unity plugin</td><td><code>google_mobile_ads</code></td><td>Google Mobile Ads SDK + UMP</td></tr>
+<tr><td>ATT</td><td>iOS 14 Advertising Support paketi</td><td><code>app_tracking_transparency</code></td><td>AppTrackingTransparency</td></tr>
+<tr><td>Satın alma</td><td>Unity IAP</td><td><code>in_app_purchase</code></td><td>StoreKit 2</td></tr>
+<tr><td>Bildirim</td><td>Mobile Notifications paketi</td><td><code>flutter_local_notifications</code></td><td>UserNotifications</td></tr>
+<tr><td>Puan isteme</td><td><code>Device.RequestStoreReview()</code></td><td><code>in_app_review</code></td><td><code>AppStore.requestReview</code></td></tr>
+</tbody></table>
+<p class="small muted">Godot veya başka bir motor kullanılıyorsa: Bu işlevler için topluluk eklentileri vardır; bakım durumlarını kontrol edin ya da yerel iOS eklentisi yazın.</p>
+
+<h2>Sorular kime?</h2>
+<p>Pazarlama/öncelik soruları: pazarlamacı. Bu doküman pazarlama planıyla (<code>docs/pazarlama-plani.md</code>) uyumludur; değişiklik olursa iki doküman birlikte güncellenir.</p>
+</section>
+
+</body></html>

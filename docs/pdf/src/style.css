@@ -1,0 +1,64 @@
+@page { size: A4; margin: 18mm 17mm 20mm 17mm; }
+:root{
+  --ink:#1f2430; --muted:#5b6475; --line:#e3e6ec; --soft:#f5f7fa;
+  --accent:#3b5bdb; --accent-soft:#edf2ff;
+  --ok:#2b8a3e; --ok-soft:#ebfbee; --warn:#e8590c; --warn-soft:#fff4e6;
+  --bad:#c92a2a; --bad-soft:#fff5f5;
+}
+*{box-sizing:border-box}
+html{font-family:"Inter","DejaVu Sans","Noto Color Emoji",sans-serif;color:var(--ink);font-size:10.4pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#fff}
+h1,h2,h3,h4{line-height:1.25;margin:0}
+h1{font-size:20pt;font-weight:700;margin:0 0 6mm;padding-bottom:3mm;border-bottom:2px solid var(--accent);color:var(--ink);break-after:avoid}
+h2{font-size:13.5pt;font-weight:700;margin:7mm 0 2.5mm;color:var(--accent);break-after:avoid}
+h3{font-size:11.2pt;font-weight:700;margin:5mm 0 2mm;break-after:avoid}
+h4{font-size:10.4pt;font-weight:700;margin:3.5mm 0 1.5mm;break-after:avoid}
+p{margin:0 0 2.6mm}
+ul,ol{margin:0 0 3mm;padding-left:5.5mm}
+li{margin:0 0 1.2mm}
+a{color:var(--accent);text-decoration:none}
+code{font-family:"DejaVu Sans Mono",monospace;font-size:8.8pt;background:var(--soft);border:1px solid var(--line);border-radius:3px;padding:0 3px}
+pre{font-family:"DejaVu Sans Mono",monospace;font-size:8.6pt;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:3mm 4mm;white-space:pre-wrap;break-inside:avoid;margin:0 0 3mm}
+strong{font-weight:700}
+.chapter{break-before:page}
+.muted{color:var(--muted)}
+.small{font-size:9pt}
+table{width:100%;border-collapse:collapse;margin:1mm 0 4mm;font-size:9.3pt;break-inside:auto}
+tr{break-inside:avoid}
+th{background:var(--accent);color:#fff;text-align:left;font-weight:600;padding:2mm 2.4mm}
+td{padding:1.8mm 2.4mm;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even) td{background:var(--soft)}
+.box{border-radius:7px;padding:3mm 4mm;margin:2mm 0 4mm;break-inside:avoid;border-left:4px solid var(--accent);background:var(--accent-soft)}
+.box.ok{border-color:var(--ok);background:var(--ok-soft)}
+.box.warn{border-color:var(--warn);background:var(--warn-soft)}
+.box.bad{border-color:var(--bad);background:var(--bad-soft)}
+.box > :last-child{margin-bottom:0}
+.box .t{font-weight:700;display:block;margin-bottom:1mm}
+.check{list-style:none;padding-left:0}
+.check li{padding-left:6mm;position:relative}
+.check li::before{content:"";position:absolute;left:0;top:1.2mm;width:3.2mm;height:3.2mm;border:1.4px solid var(--muted);border-radius:2px}
+.tag{display:inline-block;font-size:7.6pt;font-weight:700;padding:0.3mm 1.8mm;border-radius:10px;vertical-align:1px;letter-spacing:.2px}
+.p0{background:var(--bad);color:#fff}.p1{background:var(--warn);color:#fff}.p2{background:#868e96;color:#fff}
+.who{background:var(--accent-soft);color:var(--accent)}
+.cover{height:255mm;display:flex;flex-direction:column;justify-content:space-between;break-after:page}
+.cover .top{margin-top:30mm}
+.cover .kicker{font-size:10pt;font-weight:600;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase}
+.cover .title{font-size:30pt;font-weight:800;line-height:1.1;margin:5mm 0 5mm}
+.cover .sub{font-size:13pt;color:var(--muted);max-width:150mm}
+.cover .meta{border-top:1px solid var(--line);padding-top:4mm;color:var(--muted);font-size:9.5pt}
+.toc{columns:2;column-gap:10mm;font-size:10pt}
+.toc li{margin-bottom:1.6mm;break-inside:avoid}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm}
+.card{border:1px solid var(--line);border-radius:7px;padding:3mm 4mm;break-inside:avoid}
+.card h4{margin-top:0}
+.step{display:flex;gap:3mm;margin-bottom:2.5mm;break-inside:avoid}
+.step .n{flex:0 0 7mm;height:7mm;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:9pt}
+.step .c{flex:1}
+.step .c p:last-child{margin-bottom:0}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:2mm 0 4mm}
+.kpi div{border:1px solid var(--line);border-radius:7px;padding:2.5mm 3mm;break-inside:avoid}
+.kpi b{display:block;font-size:14pt;color:var(--accent)}
+.kpi span{font-size:8.6pt;color:var(--muted)}
+.check ul{list-style:disc;padding-left:5mm;margin-top:1mm}
+.check ul li{padding-left:0}
+.check ul li::before{display:none}
