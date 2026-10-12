@@ -221,3 +221,18 @@ Fikir → 2–3 haftada test edilebilir sürüm → 3 test videosu → Test → 
 | Oyun içi değişiklikler (reklam, çapraz tanıtım, analiz) | Her geliştirici kendi oyununda |
 
 **Claude ile kullanılacak skill'ler:** `aso` (mağaza sayfası) · `ad-creative` + `video` (video senaryoları) · `social` + `content-engine` (içerik takvimi) · `launch` (lansman) · `influencer-marketing` · `public-relations` · `ads` (ücretli reklam) · `ab-testing` · `analytics` · `marketing-loops` (haftalık rapor).
+
+## 13. Sık sorulanlar
+
+**Neden "ucuz ülkelerde test"?**
+Reklam fiyatı ülkeye göre değişir. ABD, Birleşik Krallık, Kanada, Avustralya, Almanya ve Japonya gibi ülkelerde çok sayıda büyük şirket aynı reklam alanı için yarıştığından bir oyuncu getirmek pahalıdır. Türkiye, Brezilya, Meksika, Filipinler, Endonezya ve Vietnam gibi ülkelerde aynı bütçe çok daha fazla oyuncu getirir.
+Testin amacı para kazanmak değil, iki soruya cevap almaktır: hangi video daha çok tıklanıyor ve oyuncular ertesi gün geri geliyor mu. Bunu öğrenmek için ucuz ülkelerdeki oyuncular yeterlidir.
+iOS testi için uygun ülkeler: Türkiye (dili ve oyuncuyu tanıyoruz), Brezilya, Meksika, Filipinler. İngilizce konuşulan ve ABD'ye benzer davranan, ama ondan biraz daha ucuz bir ülke isterseniz Kanada.
+
+**1. gün geri dönüş oranı nasıl ölçülür?**
+Örnek: Pazartesi 100 kişi oyunu indirip açtı. Salı günü bu 100 kişiden 30'u oyunu tekrar açtı. 1. gün geri dönüş oranı %30'dur. 7. gün geri dönüş oranı da aynı şekilde, oyunu ilk açtıktan 7 gün sonra tekrar açan oyuncuların oranıdır.
+Bunu elle saymayız. Oyuna eklenen ücretsiz bir analiz aracı her cihazı kimliksiz (anonim) olarak tanır ve oranı otomatik hesaplar:
+- **App Store Connect → Analytics:** Ek kod gerekmez. Ancak sadece verilerini geliştiricilerle paylaşmayı kabul eden kullanıcıları sayar, bu yüzden kaba bir fikir verir.
+- **Firebase Analytics (Google, ücretsiz):** SDK eklenir ve konsoldaki "Retention" raporunda 1., 7. ve 30. gün oranları görünür. Reklam aracı olarak AdMob kullanacaksak en uygun seçenek budur.
+- **GameAnalytics (ücretsiz, oyunlara özel):** 1. ve 7. gün oranlarını doğrudan gösterir.
+Analiz aracı eklendiğinde App Store Connect'teki gizlilik bölümünde (App Privacy) toplanan verileri beyan etmek gerekir.
