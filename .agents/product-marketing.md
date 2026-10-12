@@ -1,31 +1,34 @@
 # Product Marketing Context
 
-**Document version:** v0 (taslak — oyun detayları bekleniyor)
+**Document version:** v1
 **Last updated:** 2026-10-12
 
 ## Product Overview
-**One-liner:** [TBD — her oyun için ayrı]
+**One-liner:** Kısa oturumlu, internetsiz oynanabilen casual bulmaca oyunlarından oluşan bir stüdyo portföyü.
 **What it does:** İki bağımsız geliştiricinin (kullanıcı + arkadaşı) yaptığı mobil oyunlar. İlk hedef iOS App Store.
-**Product category:** Mobil oyun — tür(ler): [TBD: hyper-casual / casual / puzzle / aksiyon / ...]
+**Product category:** Mobil casual bulmaca — blok bulmaca (Block Blast tarzı) ve bağlantı bulmacası (Flow Free tarzı); benzer oyunlar gelmeye devam edecek.
 **Product type:** Mobil uygulama (oyun)
 **Business model:** Ücretsiz indirme (free-to-play). Gelir planı netleşmedi: reklam (tercihen ödüllü video) ve/veya uygulama içi satın alma (reklam kaldırma, kozmetik).
 
 ## Games
 | Oyun | Geliştirici | Tür | Durum | Store linki |
 |---|---|---|---|---|
-| [TBD] | Kullanıcı | [TBD] | [TBD] | — |
-| [TBD] | Arkadaş | [TBD] | [TBD] | — |
+| [TBD ad] | [TBD] | Blok bulmaca (Block Blast benzeri) | [TBD] | — |
+| [TBD ad] | [TBD] | Bağlantı bulmacası (Flow Free benzeri) | [TBD] | — |
+
+Kural: Mağaza metinlerinde "Block Blast" / "Flow Free" marka adları kullanılmaz (Apple 4.1 / marka). Her oyunun 1 net farkı olmalı (Apple 4.3 spam riski).
 
 ## Target Audience
 **Stated:** "Tüm oyun kullanıcıları" — pazarlama için çok geniş; her oyunun türüne göre daraltılacak.
 **Target countries / languages:** [TBD: Türkiye mi, global mi?]
-**Primary use case:** Kısa molalarda eğlence / [TBD]
+**Segments:** (1) Molada oynayanlar, (2) beyin oyunu sevenler (bağlantı bulmacası), (3) rahatlamak/ASMR isteyenler (blok bulmaca). Her yaş; reklamda geniş hedefleme, kitleyi video seçer.
+**Primary use case:** Kısa molalarda zihni dinlendirme / "çözdüm" hissi
 
 ## Competitive Landscape
-**Direct competitors:** [TBD — App Store'da aynı türdeki ilk 10 oyun]
+**Direct competitors:** Block Blast (Hungry Studio; reklam ağırlıklı model, çok yüksek ücretli kullanıcı kazanımı), Flow Free (Big Duck Games), ve bu türdeki çok sayıda klon. Para harcayarak yarışılamaz; farklılaşma, organik video ve portföy içi çapraz tanıtımla yarışılır.
 
 ## Differentiation
-[TBD]
+Tanıdık oyun + 1 fark (tema / mekanik / ilerleme / sosyal / vaat). Her oyun için seçilecek. Bkz. `docs/pazarlama-plani.md` §3.
 
 ## Brand Voice
 **Tone:** [TBD — eğlenceli/samimi varsayılan]
@@ -38,4 +41,5 @@
 **Current metrics:** Yok (yayında değil)
 
 ## Changelog
+- v1 (2026-10-12): Tür (blok + bağlantı bulmacası), segmentler, rakipler ve portföy stratejisi eklendi; plan: docs/pazarlama-plani.md.
 - v0 (2026-10-12): İlk taslak; kullanıcının verdiği bilgilerle oluşturuldu.
