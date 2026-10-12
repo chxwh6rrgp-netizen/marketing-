@@ -2,6 +2,7 @@
 
 Her alan için önce **ne istendiği**, sonra **EN** ve altında **TR** metni var.
 Dil değiştirmek için: sayfanın sağ üstündeki **English (U.S.) ▾** → Türkçe yoksa **Add Language → Turkish** seçin. Her dil kendi alanlarını ayrı tutar; dil değiştirince alanlar boş gelir, TR metinleri oraya girilir.
+Oyunda reklam ve uygulama içi satın alma YOK; metinler buna göre yazıldı. İleride reklam eklenirse "No ads / Reklam yok" geçen tüm metinler değiştirilmelidir.
 Oyunda olmayan bir özelliği anlatan satırı silin.
 
 ---
@@ -19,7 +20,7 @@ Oyunda olmayan bir özelliği anlatan satırı silin.
 | # | EN başlık | EN alt satır | TR başlık | TR alt satır | Görüntü |
 |---|---|---|---|---|---|
 | 1 | Sort the Colors! | Pour until every tube matches | Renkleri Sırala! | Her tüp tek renk olana kadar dök | Dökme anı |
-| 2 | Relax, No Timer | Play at your own pace | Rahatla, Süre Yok | Kendi temponda oyna | Yarısı çözülmüş bölüm |
+| 2 | No Ads, No Timer | Just you and the colors | Reklam Yok, Süre Yok | Sadece sen ve renkler | Yarısı çözülmüş sakin bölüm |
 | 3 | Hundreds of Levels | From easy to brain-melting | Yüzlerce Bölüm | Kolaydan beyin yakana | Çok tüplü zor bölüm |
 | 4 | Play Offline | Anytime, anywhere | İnternetsiz Oyna | Her zaman, her yerde | Bitmek üzere bölüm |
 | 5 | Train Your Brain | A few minutes a day | Zihnini Çalıştır | Günde birkaç dakika | "Bölüm geçildi" ekranı |
@@ -31,11 +32,11 @@ Video (opsiyonel): 0–3 sn tüplerin tek renge döndüğü an → 3–12 sn hı
 
 EN
 ```
-Pour, sort and relax! Hundreds of colorful levels, no timer and no internet needed. How many can you solve?
+Pour, sort and relax! No ads, no timer and no internet needed. Hundreds of colorful levels. How many can you solve?
 ```
 TR
 ```
-Dök, sırala, rahatla! Yüzlerce renkli bölüm, zamanlayıcı yok, internet gerekmez. Kaçını çözebilirsin?
+Dök, sırala, rahatla! Reklam yok, süre yok, internet gerekmez. Yüzlerce renkli bölüm seni bekliyor. Kaçını çözebilirsin?
 ```
 
 ### 1.4 Description (4000 karakter)
@@ -48,6 +49,7 @@ Pour, sort and relax with Color Sort, a calm and colorful puzzle game.
 Tap a tube to pour the top color into another tube. You can only pour onto the same color or into an empty tube. Sort every color into its own tube to clear the level. Easy to learn, surprisingly hard to master.
 
 WHY YOU'LL LOVE IT
+• No ads, ever: nothing interrupts your game
 • Hundreds of levels, from easy to brain-melting
 • No timer and no pressure: play at your own pace
 • Play offline, anytime and anywhere
@@ -57,7 +59,7 @@ WHY YOU'LL LOVE IT
 
 A few minutes a day is a great way to unwind and keep your mind sharp.
 
-Color Sort is free to play and contains ads. An optional in-app purchase removes ads.
+Color Sort is completely free, with no ads and no in-app purchases.
 ```
 TR
 ```
@@ -66,6 +68,7 @@ Color Sort ile renkleri dök, sırala ve rahatla!
 Bir tüpe dokun, en üstteki rengi başka bir tüpe dök. Sadece aynı rengin üstüne ya da boş bir tüpe dökebilirsin. Her rengi kendi tüpünde topla, bölümü geç. Öğrenmesi kolay, ustalaşması zor.
 
 NEDEN SEVECEKSİN
+• Hiç reklam yok: oyunun asla bölünmez
 • Kolaydan beyin yakana yüzlerce bölüm
 • Süre yok, baskı yok: kendi temponda oyna
 • İnternetsiz, istediğin yerde oyna
@@ -75,7 +78,7 @@ NEDEN SEVECEKSİN
 
 Günde birkaç dakika hem kafanı dinlendirir hem zihnini zinde tutar.
 
-Color Sort ücretsizdir ve reklam içerir. İsteğe bağlı bir satın alma ile reklamlar kaldırılabilir.
+Color Sort tamamen ücretsizdir; reklam ve uygulama içi satın alma yoktur.
 ```
 
 ### 1.5 Keywords (100 karakter)
@@ -83,11 +86,11 @@ Color Sort ücretsizdir ve reklam içerir. İsteğe bağlı bir satın alma ile 
 
 EN
 ```
-water,ball,tube,bottle,glass,brain,teaser,logic,match,offline,zen,stack,fill,jar,potion,cup,iq,fun
+water,ball,tube,bottle,glass,brain,teaser,logic,match,offline,zen,stack,fill,jar,potion,no,ads,cup
 ```
 TR
 ```
-renk,sıralama,su,tüp,şişe,top,bulmaca,zeka,mantık,beyin,internetsiz,rahatlatıcı,eşleştir,doldur
+renk,sıralama,su,tüp,şişe,top,bulmaca,zeka,mantık,beyin,internetsiz,rahatlatıcı,reklamsız,doldur
 ```
 
 ### 1.6 Support URL (zorunlu)
@@ -155,14 +158,8 @@ Renkleri Dök, Kafanı Dinlendir
   - Global lansman: tüm ülkeler, **Çin anakarası hariç** (oyunlar için ayrı lisans gerekir)
 - **Pre-Order:** Lansman tarihi belliyse açın (2–6 hafta önceden). Sayfa yayın öncesi görünür, ön sipariş verenlerin telefonuna oyun çıkınca otomatik iner.
 
-## 4. Monetization → In-App Purchases → Remove Ads (mağazada görünen kısım)
-**Ne istiyor:** Satın alma ürününün mağazada ve satın alma penceresinde görünen adı, açıklaması ve fiyatı. Ürün ID ve teknik alanlar geliştiricide.
-
-| Alan | EN | TR |
-|---|---|---|
-| Display Name (30) | `Remove Ads` | `Reklamları Kaldır` |
-| Description (45) | `Remove banner and interstitial ads forever.` | `Banner ve geçiş reklamlarını kalıcı kaldırır.` |
-| Price | 2,99–3,99 USD karşılığı kademe | |
+## 4. In-App Purchases / Subscriptions
+Oyunda satın alma yok: **hiçbir şey oluşturmayın, boş kalsın.**
 
 ---
 
@@ -175,11 +172,11 @@ Renkleri Dök, Kafanı Dinlendir
 
 Description (EN, gönderilecek metin)
 ```
-Color Sort is a calm, colorful liquid-sorting puzzle made by a small independent team from Türkiye. We built it for players who want a relaxing break: there is no timer and no pressure, it works fully offline, and levels grow from gentle to truly challenging. Every pour is designed to feel smooth and satisfying, with one-finger controls that make it easy for anyone to pick up. Rewarded ads are always optional, and players can remove ads with a single purchase. We would be thrilled to share Color Sort with App Store players at launch.
+Color Sort is a calm, colorful liquid-sorting puzzle made by a small independent team from Türkiye. We built it for players who want a relaxing break: there is no timer and no pressure, it works fully offline, and levels grow from gentle to truly challenging. Every pour is designed to feel smooth and satisfying, with one-finger controls that make it easy for anyone to pick up. It is completely free, with no ads and no in-app purchases, so nothing ever interrupts the experience. We would be thrilled to share Color Sort with App Store players at launch.
 ```
 TR (sadece anlamanız için, gönderilmez)
 ```
-Color Sort, Türkiye'den küçük bağımsız bir ekibin yaptığı sakin ve renkli bir sıvı sıralama bulmacası. Rahatlatıcı bir mola isteyen oyuncular için yaptık: süre ve baskı yok, tamamen internetsiz çalışıyor, bölümler kolaydan gerçekten zora ilerliyor. Her döküş akıcı ve tatmin edici hissettirecek şekilde tasarlandı; tek parmakla oynandığı için herkes kolayca başlayabilir. Ödüllü reklamlar her zaman isteğe bağlı ve oyuncular tek bir satın almayla reklamları kaldırabilir. Color Sort'u lansmanda App Store oyuncularıyla buluşturmaktan çok mutlu oluruz.
+Color Sort, Türkiye'den küçük bağımsız bir ekibin yaptığı sakin ve renkli bir sıvı sıralama bulmacası. Rahatlatıcı bir mola isteyen oyuncular için yaptık: süre ve baskı yok, tamamen internetsiz çalışıyor, bölümler kolaydan gerçekten zora ilerliyor. Her döküş akıcı ve tatmin edici hissettirecek şekilde tasarlandı; tek parmakla oynandığı için herkes kolayca başlayabilir. Tamamen ücretsiz; reklam ve uygulama içi satın alma yok, yani deneyimi hiçbir şey bölmüyor. Color Sort'u lansmanda App Store oyuncularıyla buluşturmaktan çok mutlu oluruz.
 ```
 
 ---
@@ -207,7 +204,7 @@ Please play at least 15 levels and tell us:
 1. Was anything confusing in the first 2 minutes?
 2. Which level felt too hard or too easy?
 3. Did you see any bug, freeze or crash?
-4. Did ads ever feel annoying? When?
+4. Did any level feel boring or repetitive?
 5. Would you play again tomorrow? Why or why not?
 Send feedback with a screenshot from the TestFlight app. Thank you!
 ```
@@ -217,7 +214,7 @@ Lütfen en az 15 bölüm oyna ve bize şunları söyle:
 1. İlk 2 dakikada kafa karıştıran bir şey oldu mu?
 2. Hangi bölüm çok zor ya da çok kolay geldi?
 3. Hata, donma ya da çökme gördün mü?
-4. Reklamlar seni hiç rahatsız etti mi? Ne zaman?
+4. Sıkıcı ya da tekrar eden bir bölüm oldu mu?
 5. Yarın tekrar oynar mısın? Neden?
 Geri bildirimi TestFlight uygulamasından ekran görüntüsüyle gönderebilirsin. Teşekkürler!
 ```
@@ -246,13 +243,6 @@ Thank you so much! We're happy you're enjoying Color Sort. New levels are on the
 ```
 Çok teşekkürler! Color Sort'u sevmene çok sevindik. Yeni bölümler yolda!
 ```
-Çok reklam şikâyeti, EN / TR
-```
-Thanks for the honest feedback. We're reducing how often ads appear in the next update. You can also remove them anytime from Settings > Remove Ads.
-```
-```
-Dürüst geri bildirimin için teşekkürler. Bir sonraki güncellemede reklam sıklığını azaltıyoruz. Reklamları istediğin zaman Ayarlar > Reklamları Kaldır'dan da kaldırabilirsin.
-```
 Hata / çökme, EN / TR
 ```
 Sorry about that! Could you email us at [support e-mail] with your device model? We'll fix it as soon as possible.
@@ -269,9 +259,9 @@ Oynadığın için teşekkürler! İpucu: Takıldığında Geri Al'ı veya ekstr
 ```
 
 ### 7.3 Lansmandan sonra açılacaklar
-In-App Events, Custom Product Pages, Product Page Optimization, Promo Codes, Asset Library, Header görseli. Sırası gelince metinleri ayrıca hazırlanacak.
+In-App Events, Custom Product Pages, Product Page Optimization, Promo Codes (ücretsiz oyunda gerekmez), Asset Library, Header görseli. Sırası gelince metinleri ayrıca hazırlanacak.
 
 ---
 
 ## Sana ait olmayan alanlar (geliştirici doldurur)
-Build, App Review Information (reviewer notları, iletişim), App Privacy veri beyanı, Age Rating anketi, Game Center, In-App Purchase'ın teknik alanları (Product ID, Review Screenshot), Business sekmesi (sözleşme, banka, vergi).
+Build, App Review Information (reviewer notları, iletişim), App Privacy veri beyanı, Age Rating anketi, Game Center, Business sekmesi (sözleşme, banka, vergi).
