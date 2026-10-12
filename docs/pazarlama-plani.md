@@ -276,3 +276,23 @@ Analiz aracı eklendiğinde App Store Connect'teki gizlilik bölümünde (App Pr
 - **Sıklık:** Günde en fazla 1 bildirim, akşam saatlerinde (19:00–21:00). 7 gün gelmeyen oyuncuya bildirim göndermeyi bırakın.
 - **Kural:** Apple (4.5.4), oyuncu açıkça kabul etmedikçe bildirimlerin reklam veya tanıtım için kullanılmasına izin vermez. "Yeni oyunumuz çıktı" gibi bir bildirim için ayarlardan kapatılabilen ayrı bir izin seçeneği gerekir.
 - **Ölçüm:** Firebase'de bildirim açık olan ve kapalı olan iki grup oluşturun, 1. ve 7. gün geri dönüş oranlarını karşılaştırın.
+
+## 15. Gizlilik: analiz ve reklam için kullanıcıya ne gösterilir?
+
+> Bu bölüm hukuki danışmanlık değildir. KVKK ve GDPR ayrıntıları için yayından önce bir avukata danışın.
+
+| Ne kullanıyoruz | Ekranda pencere gerekir mi? | Zorunlu olanlar |
+|---|---|---|
+| **Sadece analiz** (Firebase, GameAnalytics; reklam kimliği toplanmadan) | Apple açısından gerekmez | Gizlilik politikası linki (App Store'da ve oyunun içinde), App Store Connect'te "App Privacy" beyanı, KVKK kapsamında aydınlatma metni (gizlilik politikasının içinde olabilir) |
+| **Reklam** (AdMob vb.), AB ve Birleşik Krallık kullanıcıları | **Evet:** onay (consent) formu | Google, bu ülkelerde sertifikalı bir onay aracı kullanılmasını şart koşuyor. Google'ın ücretsiz UMP SDK'sı bu formu sadece AB ve Birleşik Krallık kullanıcılarına gösterir. |
+| **Reklam**, iOS'ta tüm kullanıcılar | **Evet:** Apple'ın takip izni (ATT) penceresi | "Reddet" diyen kullanıcılara da reklam gösterilir, ama reklamlar kişiye özel olmaz ve daha az gelir getirir. |
+
+**Önerilen sıra:**
+1. İlk açılış: Oyuncu AB veya Birleşik Krallık'taysa onay formu gösterilir (UMP bunu kendisi kontrol eder).
+2. İlk oyun biter: Kısa bir açıklama ekranı ("Reklamların sana uygun olması için izin verir misin?"), ardından Apple'ın ATT penceresi.
+3. İlk oturumun sonunda: Bildirim izni açıklaması (bkz. 14.2).
+4. Ayarlar menüsünde: "Gizlilik politikası" linki ve "Gizlilik seçenekleri" butonu (UMP bu butonu zorunlu tutar).
+
+**Diğer notlar:**
+- Analiz aracını, kullanıcının verdiği onaya göre ayarlayın (Firebase'de "consent mode" ayarı).
+- Oyunu çocuklara yönelik olarak işaretlemeyin. Kids kategorisinin ve COPPA'nın kuralları çok daha sıkıdır.
